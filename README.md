@@ -5,7 +5,7 @@ Este é um projeto da disciplina de **Sistemas Operacionais** do curso de Análi
 O grupo é composto por:
 
 *aluno1* </br>
-*aluno2* </br>
+*Paulo Henrique de Castro Correia* </br>
 *aluno3* </br>
-*aluno4* </br>
-
+*Rafael Fraga* </br>
+*Isaac*</br>
