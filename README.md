@@ -6,6 +6,6 @@ O grupo é composto por:
 
 *Davi Gama* </br>
 *Paulo Henrique de Castro Correia* </br>
-*aluno3* </br>
+*Mario* </br>
 *Rafael Fraga* </br>
 *Isaac*</br>
