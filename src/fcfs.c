@@ -1,34 +1,26 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <sstream>
-
-using namespace std;
+#include <stdio.h>
 
 int main() {
     int n;
-    cout << "--- Simulador FCFS ---" << endl;
-    cout << "Digite a quantidade de processos: ";
-    cin >> n;
+    printf("--- Simulador FCFS ---\n");
+    printf("Digite a quantidade de processos: ");
+    scanf("%d", &n);
 
-    
+
     int tempo_chegada[100];
     int tempo_execucao[100];
     int tempo_espera[100];
     int tempo_resposta[100];
     int tempo_conclusao[100];
-    string processos[100];
 
-
-    for (int i = 0; i < n; i++) {
-        stringstream ss;
-        ss << "P" << (i + 1);
-        processos[i] = ss.str(); 
-
-        cout << "\nTempo de chegada do " << processos[i] << ": ";
-        cin >> tempo_chegada[i];
-        cout << "Tempo de execucao (Burst) do " << processos[i] << ": ";
-        cin >> tempo_execucao[i];
+    int i;
+ 
+    for (i = 0; i < n; i++) {
+        printf("\nTempo de chegada do P%d: ", i + 1);
+        scanf("%d", &tempo_chegada[i]);
+        
+        printf("Tempo de execucao (Burst) do P%d: ", i + 1);
+        scanf("%d", &tempo_execucao[i]);
     }
 
     int tempo_atual = 0;
@@ -36,8 +28,8 @@ int main() {
     float soma_resposta = 0.0;
 
 
-    for (int i = 0; i < n; i++) {
-     
+    for (i = 0; i < n; i++) {
+    
         if (tempo_atual < tempo_chegada[i]) {
             tempo_atual = tempo_chegada[i];
         }
@@ -52,29 +44,23 @@ int main() {
         soma_resposta += tempo_resposta[i];
     }
 
+    printf("\n---------------------------------------------------------------------------\n");
+    printf("%-12s %-12s %-18s %-12s %-20s\n", "Processo", "Chegada", "Execucao (Burst)", "Espera", "Resposta (Turnaround)");
+    printf("---------------------------------------------------------------------------\n");
 
-    cout << "\n---------------------------------------------------------------------------\n";
-    cout << left << setw(12) << "Processo" 
-         << setw(12) << "Chegada" 
-         << setw(18) << "Execucao (Burst)" 
-         << setw(12) << "Espera" 
-         << "Resposta (Turnaround)\n";
-    cout << "---------------------------------------------------------------------------\n";
-
-    for (int i = 0; i < n; i++) {
-        cout << left << setw(12) << processos[i] 
-             << setw(12) << tempo_chegada[i] 
-             << setw(18) << tempo_execucao[i] 
-             << setw(12) << tempo_espera[i] 
-             << tempo_resposta[i] << "\n";
+    for (i = 0; i < n; i++) {
+       
+        printf("P%-11d %-12d %-18d %-12d %-20d\n", i + 1, tempo_chegada[i], tempo_execucao[i], tempo_espera[i], tempo_resposta[i]);
     }
 
-    cout << "---------------------------------------------------------------------------\n";
+    printf("---------------------------------------------------------------------------\n");
     
+  
+    printf("Tempo medio de espera: %.2f unidades\n", soma_espera / n);
+    printf("Tempo medio de resposta: %.2f unidades\n", soma_resposta / n);
 
-    cout << fixed << setprecision(2);
-    cout << "Tempo medio de espera: " << (soma_espera / n) << " unidades\n";
-    cout << "Tempo medio de resposta: " << (soma_resposta / n) << " unidades\n";
+    return 0;
+}
 
     return 0;
 }
