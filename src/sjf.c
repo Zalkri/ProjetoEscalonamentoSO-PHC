@@ -36,7 +36,7 @@ void calcularSJF(Process p[], int n) {
         if (idx == -1) {
             current_time++;
         } else {
-            // Executa o processo selecionado
+            
             current_time += p[idx].burst_time;
             p[idx].completion_time = current_time;
             p[idx].turnaround_time = p[idx].completion_time - p[idx].arrival_time;
